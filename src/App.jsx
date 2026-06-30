@@ -85,33 +85,42 @@ function Hero() {
       id="hero"
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #FAF8F5 0%, #F5EDE0 50%, #EDD9BE 100%)',
+        background: 'linear-gradient(125deg, #FDF5E8 0%, #F5DEB0 35%, #EAC878 65%, #D4A050 100%)',
         display: 'flex', alignItems: 'center',
         padding: '0 80px',
         position: 'relative', overflow: 'hidden',
       }}
     >
+      {/* 왼쪽 위 부드러운 밝은 스팟 */}
       <div style={{
-        position: 'absolute', top: '-10%', right: '-5%',
-        width: '55%', height: '120%',
-        background: 'radial-gradient(ellipse at center, rgba(184,116,42,0.12) 0%, transparent 70%)',
-        pointerEvents: 'none',
+        position: 'absolute', top: '-15%', left: '-10%',
+        width: '65%', height: '130%',
+        background: 'radial-gradient(ellipse, rgba(255,245,210,0.7) 0%, transparent 60%)',
+        pointerEvents: 'none', zIndex: 0,
+      }} />
+      {/* 오른쪽 아래 웜 글로우 */}
+      <div style={{
+        position: 'absolute', bottom: '-20%', right: '-5%',
+        width: '55%', height: '90%',
+        background: 'radial-gradient(ellipse, rgba(200,130,40,0.35) 0%, transparent 65%)',
+        pointerEvents: 'none', zIndex: 0,
       }} />
 
-      <div style={{ flex: 1, zIndex: 2 }}>
+      {/* 텍스트 */}
+      <div style={{ flex: 1, zIndex: 3 }}>
         <p className="animate-fade-up" style={{
           fontFamily: 'Inter, sans-serif',
-          fontSize: '11px', letterSpacing: '0.25em',
-          color: '#B8742A', marginBottom: '20px', fontWeight: 500,
+          fontSize: '11px', letterSpacing: '0.28em',
+          color: '#7A4510', marginBottom: '20px', fontWeight: 600,
         }}>
           28 PEPTIDES COMPLEX
         </p>
 
         <h1 className="animate-fade-up delay-200" style={{
           fontFamily: '"Cormorant Garamond", Georgia, serif',
-          fontSize: 'clamp(48px, 6vw, 88px)',
+          fontSize: 'clamp(46px, 5.8vw, 86px)',
           fontWeight: 300, lineHeight: 1.1,
-          color: '#1A1A1A', marginBottom: '28px',
+          color: '#2A1400', marginBottom: '28px',
           letterSpacing: '-0.01em',
         }}>
           Repair Complex<br />
@@ -120,8 +129,8 @@ function Hero() {
 
         <p className="animate-fade-up delay-400" style={{
           fontFamily: 'Inter, sans-serif',
-          fontSize: '15px', lineHeight: 1.8,
-          color: '#5A5A5A', maxWidth: '420px',
+          fontSize: '15px', lineHeight: 1.85,
+          color: '#5C3510', maxWidth: '400px',
           marginBottom: '48px', fontWeight: 300,
         }}>
           28가지 펩타이드 복합물로 피부 본연의<br />
@@ -135,29 +144,44 @@ function Hero() {
             display: 'inline-block',
             fontFamily: 'Inter, sans-serif',
             fontSize: '12px', letterSpacing: '0.15em',
-            color: '#1A1A1A', textDecoration: 'none',
-            border: '1px solid #1A1A1A',
-            padding: '16px 40px',
+            color: '#2A1400', textDecoration: 'none',
+            border: '1px solid rgba(80,40,0,0.5)',
+            padding: '15px 40px',
+            background: 'rgba(255,240,200,0.4)',
+            backdropFilter: 'blur(6px)',
             transition: 'all 0.3s',
           }}
-          onMouseEnter={e => { e.target.style.background = '#1A1A1A'; e.target.style.color = '#fff' }}
-          onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = '#1A1A1A' }}
+          onMouseEnter={e => { e.target.style.background = 'rgba(42,20,0,0.8)'; e.target.style.color = '#FFE8A0'; e.target.style.borderColor = 'transparent' }}
+          onMouseLeave={e => { e.target.style.background = 'rgba(255,240,200,0.4)'; e.target.style.color = '#2A1400'; e.target.style.borderColor = 'rgba(80,40,0,0.5)' }}
         >
           DISCOVER MORE
         </a>
       </div>
 
+      {/* 제품 이미지 */}
       <div className="animate-float" style={{
-        flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center',
-        zIndex: 2,
+        flex: 1.2, display: 'flex', justifyContent: 'center', alignItems: 'center',
+        zIndex: 3, position: 'relative',
       }}>
+        {/* 제품 뒤 빛 글로우 */}
+        <div style={{
+          position: 'absolute',
+          width: '420px', height: '520px',
+          background: 'radial-gradient(ellipse, rgba(255,220,130,0.5) 0%, rgba(220,160,50,0.2) 45%, transparent 70%)',
+          filter: 'blur(30px)',
+          zIndex: 0,
+        }} />
         <img
-          src="/serum.png"
+          src="/serum-nobg.png"
           alt="da:ola Repair Complex Serum"
           style={{
-            width: '100%', maxWidth: '620px',
+            width: '100%', maxWidth: '780px',
             objectFit: 'contain',
-            filter: 'drop-shadow(0 40px 60px rgba(0,0,0,0.12))',
+            filter: [
+              'drop-shadow(0 50px 60px rgba(100,50,0,0.3))',
+              'drop-shadow(0 0 30px rgba(220,160,60,0.25))',
+            ].join(' '),
+            position: 'relative', zIndex: 2,
           }}
         />
       </div>
@@ -180,7 +204,7 @@ function ProductSection() {
         transition: 'all 0.9s ease',
       }}>
         <img
-          src="/serum.png"
+          src="/serum-nobg.png"
           alt="da:ola Repair Complex Serum"
           style={{
             width: '100%', maxWidth: '500px',
